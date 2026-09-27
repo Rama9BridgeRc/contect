@@ -64,7 +64,7 @@
         // =========================================================================
         // สำคัญ: นำ URL ที่ได้จากการ Deploy Google Apps Script (Web App) มาวางที่นี่
         // =========================================================================
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzBxJwwjEawgkPgpaY8LjfXfR6h-8Xm8yr8HeNplbGBxmrw6LxUrq1f62xlzp2fZC20/exec'; 
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzBxJwwjEawgkPgpaY8LjfXfR6h-8Xm8yr8HeNplbGBxmrw6LxUrq1f62xlzp2fZC20/exec';
 
         const timeoutCheck = setTimeout(() => {
             const loader = document.getElementById('loading');
@@ -116,10 +116,10 @@
                         urlIcon = 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg';
                         platformColor = '#E1306C';
                     } else if (platform.includes('threads')) {
-                        urlIcon = 'https://cdn-icons-png.flaticon.com/512/11104/11104255.png'; 
+                        urlIcon = 'https://cdn-icons-png.flaticon.com/512/11104/11104255.png';
                         platformColor = '#000000'; 
                     } else if (platform.includes('tiktok')) {
-                        urlIcon = 'https://cdn-icons-png.flaticon.com/512/3046/3046121.png'; 
+                        urlIcon = 'https://cdn-icons-png.flaticon.com/512/3046/3046121.png';
                         platformColor = '#000000'; 
                     } else if (platform.includes('youtube') || platform === 'yt') {
                         urlIcon = 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg';
@@ -163,16 +163,14 @@
             }
         }
 
-        // เริ่มดึงข้อมูลเมื่อหน้าเว็บโหลดเสร็จ
         document.addEventListener('DOMContentLoaded', () => {
-            // ตรวจสอบว่าใส่ URL หรือยัง
-            if(WEB_APP_URL === 'วาง_URL_ของ_GOOGLE_APPS_SCRIPT_ที่นี่') {
-                 displayLinks({ error: "โปรดใส่ URL ของ Web App ในตัวแปร WEB_APP_URL ในซอร์สโค้ด (บรรทัดที่ 67) ก่อนใช้งาน" });
-                 return;
+            if (WEB_APP_URL === 'วาง_URL_ของ_GOOGLE_APPS_SCRIPT_ที่นี่') {
+                displayLinks({ error: "โปรดใส่ URL ของ Web App ในตัวแปร WEB_APP_URL ในซอร์สโค้ด" });
+                return;
             }
 
-            // ใช้ fetch ดึงข้อมูลจาก API แทนการใช้ google.script.run
-            fetch(WEB_APP_URL)
+            // เพิ่ม redirect: 'follow' เพื่อให้ทำงานร่วมกับ Google Apps Script ได้ไม่ติด CORS Error
+            fetch(WEB_APP_URL, { method: "GET", redirect: "follow" })
                 .then(response => response.json())
                 .then(data => displayLinks(data))
                 .catch(error => {
