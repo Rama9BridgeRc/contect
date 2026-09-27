@@ -64,7 +64,7 @@
         // =========================================================================
         // สำคัญ: นำ URL ที่ได้จากการ Deploy Google Apps Script (Web App) มาวางที่นี่
         // =========================================================================
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzr21pJ2lhOzjK3qh6pD4tO8LgpE3AmE-Xkkvd_-l4tOpuLCahiNrAhmNV4Wu-TYLiHsQ/exec'; 
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzBxJwwjEawgkPgpaY8LjfXfR6h-8Xm8yr8HeNplbGBxmrw6LxUrq1f62xlzp2fZC20/exec'; 
 
         const timeoutCheck = setTimeout(() => {
             const loader = document.getElementById('loading');
